@@ -1,0 +1,50 @@
+.font-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: start;
+    gap: 15px;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.font-card {
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+    height: 300px;
+    width: 350px;
+    position: relative;  /* 추가된 스타일 */
+}
+
+.font-card:hover {
+    transform: scale(1.05);
+}
+
+.font-image {
+    width: 100%;
+    height: 150px;
+    object-fit: contain;
+    margin-top: 15px;
+    border-radius: 4px;
+}
+
+.download-link {
+    display: inline-block;
+    background-color: #2196F3;
+    color: white;
+    padding: 5px 10px;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+    position: absolute;  /* 추가된 스타일 */
+    bottom: 10px;        /* 추가된 스타일: 카드 하단에서 10px 위에 위치 */
+    left: 50%;           /* 추가된 스타일 */
+    transform: translateX(-50%);  /* 추가된 스타일: 버튼을 중앙에 위치시키기 위한 코드 */
+}
+
+.download-link:hover {
+    background-color: #1976D2;
+}

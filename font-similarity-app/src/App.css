@@ -1,0 +1,623 @@
+.main-container {
+    font-family: Arial, sans-serif; /* 웹페이지 전체의 폰트 설정 */
+}
+body {
+    font-family: Arial, sans-serif;
+    /*background-image: url('path_to_your_image.jpg'); !* You can replace 'path_to_your_image.jpg' with the path to your desired image *!*/
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+.message {
+    white-space: pre-line;
+}
+.message strong {
+    font-weight: bold;
+}
+
+.message code {
+    background-color: #f5f5f5;
+    padding: 2px 4px;
+    font-family: monospace;
+}
+
+
+/* Header.css */
+.header {
+    display: flex;                  /* Flexbox를 사용하여 내부 아이템들을 효과적으로 정렬 */
+    flex-direction: column;         /* 헤더의 주 축을 세로로 설정 */
+    justify-content: flex-start;    /* 내부 아이템들을 상단부터 시작하여 정렬 */
+    align-items: center;            /* 내부 아이템들을 가로 축으로 중앙에 정렬 */
+    padding: 20px;                  /* 헤더의 내부 여백 설정 */
+    background-color: white;      /* 헤더의 배경색 지정 */
+    color: white;                   /* 헤더의 기본 텍스트 색상 지정 */
+}
+
+
+/* 상단 섹션 (로고, 검색바, 사용자 정보) 스타일링 */
+.top-section {
+    width: 100%;                    /* 상단 섹션의 너비를 부모 요소의 전체 너비로 설정 */
+    display: flex;                  /* Flexbox를 사용하여 내부 아이템들을 효과적으로 정렬 */
+    justify-content: space-between; /* 내부 아이템들 사이에 균일한 간격을 둠 */
+    align-items: center;            /* 내부 아이템들을 가로 축으로 중앙에 정렬 */
+    gap: 10px;                      /* 내부 아이템들 사이의 간격 설정 */
+}
+/* 로고 영역 스타일링 */
+.logo {
+    display: flex;                  /* 로고 이미지를 중앙에 정렬하기 위해 flex 사용 */
+    align-items: center;            /* 로고 이미지를 세로 방향 중앙에 정렬 */
+}
+
+/* 로고 이미지 스타일링 */
+.logo img {
+    max-width: 100%;                /* 이미지의 최대 너비 설정 */
+    max-height: 100px;              /* 이미지의 최대 높이 설정 */
+    height: 100%;                   /* 이미지 높이를 원본 비율에 맞게 조정 */
+}
+
+/* 카테고리 메뉴 전체 영역 스타일링 */
+.categories {
+    width: 100%;                    /* 메뉴의 전체 너비 설정 */
+    display: flex;                  /* 메뉴 아이템들을 한 줄로 정렬 */
+    justify-content: space-around;  /* 메뉴 아이템들 사이에 균일한 간격을 둠 */
+    color: black;
+}
+
+/* 각 카테고리 메뉴 아이템 스타일링 */
+.category-item {
+    position: relative;             /* 드롭다운 메뉴의 위치를 기준으로 설정하기 위해 상대 위치 사용 */
+    color: black;
+}
+/* 각 카테고리 메뉴 아이템 스타일링 */
+.category-item a{
+    position: relative;             /* 드롭다운 메뉴의 위치를 기준으로 설정하기 위해 상대 위치 사용 */
+    color: black;
+    font-size : 1.9vw;
+}
+
+/* 드롭다운 메뉴 스타일링 */
+.category-dropdown {
+    display: none;                  /* 기본적으로 드롭다운 메뉴는 숨김 */
+    position: absolute;             /* 절대 위치를 사용하여 카테고리 아이템 아래에 위치 */
+    top: 100%;                      /* 카테고리 아이템의 바로 아래에 위치 */
+    left: 50%;                      /* 카테고리 아이템의 중앙에 위치 */
+    transform: translateX(-50%);    /* X 축으로 -50%만큼 이동하여 정확히 중앙에 위치 */
+    background-color: white;        /* 배경색 설정 */
+    border: 1px solid #ccc;         /* 테두리 설정 */
+    border-radius: 5px;             /* 모서리 둥글게 설정 */
+    padding: 10px;                  /* 내부 여백 설정 */
+    z-index: 1000000;                    /* 다른 요소 위에 표시되도록 z-index 설정 */
+    white-space: nowrap;            /* 텍스트 줄바꿈 방지 */
+}
+
+/* 드롭다운 메뉴의 링크 스타일링 */
+.category-dropdown a {
+    color: black;                   /* 텍스트 색상 설정 */
+    text-decoration: none;          /* 밑줄 제거*/
+}
+
+/* 드롭다운 메뉴의 링크에 마우스를 올렸을 때의 스타일링 */
+.category-dropdown a:hover {
+    text-decoration: underline;     /* 밑줄 추가하여 호버 효과 제공 */
+}
+
+/* 카테고리 아이템에 마우스를 올렸을 때의 드롭다운 메뉴 스타일링 */
+.category-item:hover .category-dropdown {
+    display: block;                 /* 마우스를 올리면 드롭다운 메뉴 표시 */
+}
+
+.category-item a {
+    color: black;
+    text-decoration: none;
+}
+
+.category-item a:hover {
+    text-decoration: underline;
+}
+
+/* 검색바 스타일링 */
+.search-container {
+    position: relative;
+    max-width: 800px;
+    width: 100%;
+    margin: auto;  /* 중앙 정렬을 위한 추가된 스타일 */
+}
+
+.search-bar {
+    position: relative;
+    max-width: 800px;               /* 검색바의 최대 너비 설정 */
+    width: 100%;                    /* 검색바의 너비를 부모 요소의 전체 너비로 설정 */
+    height: 50px;                   /* 검색바 높이 설정 */
+    border-radius: 25px;            /* 모서리 둥글게 설정 */
+    border: 1px solid #00a550;      /* 테두리 설정 */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* 그림자 효과 설정 */
+    font-size: 20px;                /* 텍스트 크기 설정 */
+    color: #777;                    /* 텍스트 색상 설정 */
+    outline: none;                  /* 포커스 시 외곽선 제거 */
+    padding-right: 50px; /* 아이콘의 공간을 확보하기 위해 패딩 추가 */
+    padding-left: 20px;
+    box-sizing: border-box;         /* padding과 border가 너비에 포함되도록 설정 */
+}
+
+/* 검색바 placeholder 스타일링 */
+.search-bar::placeholder {
+    color: #aaa;                    /* 텍스트 색상 설정 */
+}
+.search-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    margin: 0;
+    position: absolute;
+    right: 20px;/* 오른쪽 패딩 값 */
+    top: 50%;
+    transform: translateY(-50%);
+}
+.search-icon {
+    width :30px;                  /* 아이콘 크기 조절 */
+    height: 30px;
+}
+
+
+
+/* 반응형 디자인: 화면 너비가 768px 이하일 때의 스타일링 */
+@media (max-width: 768px) {
+    .logo {
+        flex-grow: 0;                /* flex-grow를 0으로 설정하여 로고가 상위 컨테이너의 너비를 차지하지 않게 합니다. */
+        justify-content: center;     /* 로고 이미지를 가로 방향으로 중앙에 정렬합니다. */
+        width: 100%;                 /* 로고 영역의 너비를 상위 컨테이너의 전체 너비로 설정합니다. */
+    }
+    .top-section {
+        flex-direction: column;       /* 상단 섹션의 주 축을 세로로 변경 */
+        gap: 10px;                    /* 내부 아이템들 사이의 간격 설정 */
+        align-items: center;
+    }
+
+    logo img {
+        max-width: 70%;               /* 로고 이미지의 최대 너비를 조절 */
+        height: auto;
+    }
+
+    .categories {
+        flex-wrap: wrap;              /* 메뉴 항목이 넘치면 다음 줄로 이동 */
+        gap: 5px;                     /* 메뉴 항목 간의 간격 조정 */
+    }
+
+    .category-item {
+        flex: 1 1 auto;               /* 메뉴 항목의 크기와 유연성 조정 */
+        text-align: center;           /* 텍스트 중앙 정렬 */
+    }
+
+    .category-dropdown {
+        left: 0;                      /* 드롭다운 메뉴의 위치 조정 */
+        transform: none;              /* 위치 변환 제거 */
+    }
+    .logo a {
+        display: flex;                /* a 태그를 flex 컨테이너로 설정 */
+        justify-content: center;     /* 가로 방향 중앙 정렬 */
+        align-items: center;         /* 세로 방향 중앙 정렬 */
+        width: 100%;                 /* a 태그의 너비를 최대로 설정 */
+        height: 100%;                /* a 태그의 높이를 최대로 설정 */
+    }
+    .search-container {
+        width: 90%;                   /* 검색바의 너비 조정 */
+        margin-top: 15px;             /* 상단 여백 추가 */
+    }
+
+    .search-bar {
+        font-size: 18px;              /* 텍스트 크기 조절 */
+        padding-right: 40px;          /* 오른쪽 패딩 값 조절 */
+    }
+
+    .search-icon {
+        width :30px;                  /* 아이콘 크기 조절 */
+        height: 30px;
+    }
+
+    .search-button {
+        right: 10px;                  /* 오른쪽 패딩 값 조절 */
+    }
+
+}
+
+.page-title {
+    position: relative;             /* 절대 위치의 기준점 설정 */
+    margin-bottom: 20px; /* PredictPage와의 간격을 주기 위함 */
+    text-align: center;  /* 텍스트를 중앙에 배치하기 위함 */
+}
+
+.PredictPage {
+    position: relative;             /* 절대 위치의 기준점 설정 */
+    display: flex;
+    flex-direction: column; /* 상하 배치 */
+    width: 100%;
+    align-items: center; /* 자식 요소를 중앙에 배치하기 위함 */
+}
+
+.PredictPage-container {
+    width: 80%;
+    max-width: 1200px;
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+
+.drag-drop-area {
+    margin: 20px 0;
+    padding: 30px;
+    border: 2px dashed #ccc;
+    border-radius: 8px;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.drag-drop-area:hover {
+    background-color: #f3f3f3;
+}
+
+.drag-drop-area p {
+    font-size: 16px;
+}
+
+.drag-drop-area label {
+    color: #4CAF50;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.PredictPage-button {
+    display: block;
+    margin: 20px auto;
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.PredictPage-button:hover {
+    background-color: #45a049;
+}
+
+.uploaded-file {
+    margin: 30px 0;
+    padding: 20px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.uploaded-file img {
+    max-width: 70%;
+    margin-top: 20px;
+    border-radius: 4px;
+}
+
+.uploaded-file h3 {
+    font-size: 20px;
+    margin-bottom: 15px;
+}
+
+.font-item {
+    display: flex;
+    width:90%;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 30px;
+    padding: 20px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    font-family: 'Arial', sans-serif;
+    background-color: #f9f9f9;
+    transition: transform 0.2s;
+}
+.font-items-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 한 줄에 2개의 아이템 */
+    gap: 20px; /* 아이템들 사이의 간격 */
+}
+
+.font-item:hover {
+    transform: translateY(-5px);
+}
+
+.font-item strong {
+    font-size: 24px;
+    margin-bottom: 5px;
+}
+
+.font-item span {
+
+    font-size: 35px;
+    margin-bottom: 15px;
+    color: #00a550;
+}
+
+.font-item a {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 8px 12px;
+    background-color: #007BFF;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background-color 0.2s;
+}
+
+.font-item a:hover {
+    background-color: #0056b3;
+}
+
+.font-item p {
+    margin-top: 10px;
+    font-size: 14px;
+    color: #999;
+}
+
+
+.img {
+    max-width: 60%;
+    display: block;
+    margin: 15px 0;
+    border-radius: 4px;
+}
+
+.PredictPage-a {
+    display: inline-block;
+    background-color: #2196F3;
+    color: white;
+    padding: 5px 10px;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+.PredictPage-a:hover {
+    background-color: #1976D2;
+}
+
+
+
+/* Pagination.css */
+.pagination-nav {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.pagination {
+    list-style-type: none;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.page-item {
+    margin: 0 5px;
+}
+
+.page-item.active .page-link {
+    background-color: #007BFF;
+    color: white;
+}
+
+.page-link {
+    padding: 5px 10px;
+    border: 1px solid #e5e5e5;
+    color: #007BFF;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.page-link:hover {
+    background-color: #e5e5e5;
+}
+
+.AllPage {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;  /* 카드들을 가운데 정렬 */
+    align-items: start;  /* 카드들의 상단을 맞춤 */
+    gap: 15px;  /* 카드들 사이의 간격 */
+}
+.AllPage select {
+    margin: 20px 0;   /* 상하 여백 추가 */
+    padding: 10px 20px;  /* 내부 패딩 설정 */
+    font-size: 16px;  /* 폰트 크기 조정 */
+    border: 1px solid #ddd;  /* 테두리 설정 */
+    border-radius: 5px;  /* 둥근 모서리 추가 */
+    background-color: #f9f9f9;  /* 배경색 설정 */
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);  /* 그림자 효과 추가 */
+    appearance: none;  /* 브라우저 기본 스타일 제거 */
+    cursor: pointer;  /* 마우스 커서를 손가락 모양으로 변경 */
+    transition: background-color 0.3s;  /* 배경색의 전환 효과 추가 */
+    right: 50%;
+}
+
+.AllPage select:hover {
+    background-color: #f0f0f0;  /* 마우스 호버 시 배경색 변경 */
+}
+
+.AllPage select:focus {
+    outline: none;  /* 포커스 시 테두리 제거 */
+    border-color: #007BFF;  /* 포커스 시 테두리 색 변경 */
+}
+
+/* 아이콘 메뉴 전체 스타일링 */
+.icon-menu-container {
+    padding: 20px;
+}
+
+.icon-menu {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #e0e0e0;
+    margin-bottom: 20px;
+}
+
+/* 각 아이콘 스타일링 */
+.icon {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    opacity: 0.5;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    position: relative; /* tooltip이 아이콘에 상대적으로 위치하도록 설정 */
+
+}
+.icon img {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.icon:hover {
+    transform: scale(1.3);
+    opacity: 1;
+}
+/* 기존 CSS 코드 아래에 추가 */
+.tooltip {
+    visibility: hidden;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    padding: 5px;
+    border-radius: 6px;
+    position: absolute;
+    z-index: 1;
+    bottom: -100%; /* 툴팁의 위치 */
+    opacity: 0;
+    transition: opacity 0.3s;
+    left: 50%;
+    transform: translateX(-50%); /* 툴팁을 아이콘의 중앙에 위치하도록 조정 */
+    white-space: nowrap;  /* 줄 바꿈 방지 */
+}
+
+.icon:hover .tooltip {
+    visibility: visible;
+    opacity: 1;
+}
+
+.icon.close-icon { /* 'X' 아이콘의 클래스 선택자 수정 */
+    width: 30px;
+    height: 30px;
+    background-color: transparent;
+    color: #ff0000;
+    font-weight: bold;
+    transition: transform 0.3s ease;
+    display: flex; /* 아이콘 내용을 중앙에 위치 */
+    align-items: center;
+    justify-content: center;
+}
+
+.icon.close-icon:hover {
+    transform: scale(1.2);
+}
+
+
+/* 챗봇 모달 영역 */
+/* 기존 .chatbot 스타일을 .chatbot-page로 변경 */
+.chatbot-page {
+    width: 100%;
+    padding: 20px;
+    box-shadow: none;
+    margin: 0;
+    position: relative;
+    z-index: 1;
+}
+
+/* 기존의 .float-button 스타일은 필요 없으므로 제거 */
+
+.chat-window {
+    width: 100%;
+    max-width: 800px;
+    margin: 20px auto;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    overflow: auto;
+    padding: 10px;
+}
+
+.float-button {
+    background-color: #007bff;
+    color: #fff;
+    padding: 15px 25px;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    transition: transform 0.3s;
+}
+
+.float-button:hover {
+    transform: scale(1.05);
+}
+
+.message {
+    padding: 10px;
+    margin: 5px;
+    border-radius: 10px;
+    color: #000;
+}
+
+.message.user {
+    background-color: #e6f7ff;
+    align-self: flex-end;
+}
+
+.message.bot {
+    background-color: #fff2e6;
+}
+
+.input-container {
+    display: flex;
+    padding: 10px;
+    border-top: 1px solid #ddd;
+    background-color: #f5f5f5;
+}
+
+.input-container input {
+    flex-grow: 1;
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+}
+
+.input-container button {
+    margin-left: 10px;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.loading-spinner {
+    width: 40px;
+    height: 40px;
+    margin: 20px auto;
+    border: 5px solid #eee;
+    border-top: 5px solid #007bff;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+
+
+
