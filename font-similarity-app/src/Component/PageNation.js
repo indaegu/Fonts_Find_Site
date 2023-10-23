@@ -19,10 +19,11 @@ const PageNation = ({ totalFonts, fontsPerPage, paginate }) => {
     const handleNext = () => {
         if (endPage < totalPages) {
             setStartPage(prevStart => prevStart + 1);
-            paginate(startPage + 1);
+            const nextPage = currentPage + 1; // 추가: 다음 페이지 번호 계산
+            paginate(nextPage);
+            setCurrentPage(nextPage); // 추가: 현재 페이지 상태 업데이트
         }
     };
-
     const handlePaginate = (number) => {
         paginate(number);
         setCurrentPage(number); // 추가: 현재 페이지 업데이트

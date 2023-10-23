@@ -28,10 +28,10 @@ function IconMenu({onCategorySelect} ) {
                         <span className="tooltip">{icon.name}</span>
                     </div>
                 ))}
-                {/* "X" 아이콘이 선택된 카테고리가 'All'이 아닐 때만 표시되도록 수정 */}
+                {/* "X" 아이콘 이미지로 변경 */}
                 {selectedCategory && selectedCategory !== 'All' && (
                     <div className="icon close-icon" onClick={() => handleIconClick('All')}>
-                        X
+                        <img src="close.png" alt="닫기" />
                     </div>
                 )}
             </div>

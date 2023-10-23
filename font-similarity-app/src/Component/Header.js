@@ -17,7 +17,7 @@ const Header = ({onSearch}) => {
         <header className="header">
             <div className="top-section">
                 <div className="logo">
-                    <a href="/"><img src="/logo.png" alt="Logo" />
+                    <a href="/"><img src="/logo1.png" alt="Logo" />
                     </a>
                 </div>
 

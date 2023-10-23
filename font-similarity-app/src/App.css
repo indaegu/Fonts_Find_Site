@@ -3,7 +3,7 @@
 }
 body {
     font-family: Arial, sans-serif;
-    /*background-image: url('path_to_your_image.jpg'); !* You can replace 'path_to_your_image.jpg' with the path to your desired image *!*/
+    background-image: url('C:\Code\mon\font-similarity-app\public\back.jpg'); /* You can replace 'path_to_your_image.jpg' with the path to your desired image */
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
@@ -28,13 +28,12 @@ body {
     flex-direction: column;         /* 헤더의 주 축을 세로로 설정 */
     justify-content: flex-start;    /* 내부 아이템들을 상단부터 시작하여 정렬 */
     align-items: center;            /* 내부 아이템들을 가로 축으로 중앙에 정렬 */
-    padding: 20px;                  /* 헤더의 내부 여백 설정 */
     background-color: white;      /* 헤더의 배경색 지정 */
+    padding: 20px;
     color: white;                   /* 헤더의 기본 텍스트 색상 지정 */
 }
 
-
-/* 상단 섹션 (로고, 검색바, 사용자 정보) 스타일링 */
+/* 상단 섹션 (로고, 검색바) 스타일링 */
 .top-section {
     width: 100%;                    /* 상단 섹션의 너비를 부모 요소의 전체 너비로 설정 */
     display: flex;                  /* Flexbox를 사용하여 내부 아이템들을 효과적으로 정렬 */
@@ -51,13 +50,13 @@ body {
 /* 로고 이미지 스타일링 */
 .logo img {
     max-width: 100%;                /* 이미지의 최대 너비 설정 */
-    max-height: 100px;              /* 이미지의 최대 높이 설정 */
+    max-height: 300px;              /* 이미지의 최대 높이 설정 */
     height: 100%;                   /* 이미지 높이를 원본 비율에 맞게 조정 */
 }
 
 /* 카테고리 메뉴 전체 영역 스타일링 */
 .categories {
-    width: 100%;                    /* 메뉴의 전체 너비 설정 */
+    width: 80%;                    /* 메뉴의 전체 너비 설정 */
     display: flex;                  /* 메뉴 아이템들을 한 줄로 정렬 */
     justify-content: space-around;  /* 메뉴 아이템들 사이에 균일한 간격을 둠 */
     color: black;
@@ -386,38 +385,43 @@ body {
 
 
 /* Pagination.css */
+
 .pagination-nav {
     display: flex;
-    justify-content: center;
-    margin-top: 20px;
+    justify-content: center; /* 중앙 정렬 */
+    margin-top: 20px; /* 상단 여백 */
 }
 
 .pagination {
-    list-style-type: none;
-    display: flex;
-    flex-wrap: wrap;
+    list-style-type: none; /* 목록 스타일 제거 */
+    display: flex; /* 플렉스박스로 정렬 */
+    flex-wrap: wrap; /* 항목들이 여러 줄로 래핑될 수 있도록 설정 */
+
 }
 
 .page-item {
-    margin: 0 5px;
+    margin: 0 5px; /* 좌우 여백 설정 */
+
 }
 
 .page-item.active .page-link {
-    background-color: #007BFF;
-    color: white;
+    background-color: #007BFF; /* 활성화된 페이지네이션 항목의 배경색 */
+    color: white; /* 활성화된 페이지네이션 항목의 텍스트 색상 */
 }
 
 .page-link {
-    padding: 5px 10px;
-    border: 1px solid #e5e5e5;
-    color: #007BFF;
-    text-decoration: none;
-    cursor: pointer;
-    transition: background-color 0.3s;
+    padding: 5px 10px; /* 패딩 설정 */
+    border: 1px solid #e5e5e5; /* 테두리 설정 */
+    color: #007BFF; /* 텍스트 색상 설정 */
+    text-decoration: none; /* 밑줄 제거 */
+    cursor: pointer; /* 마우스 커서를 포인터로 설정 */
+    transition: background-color 0.2s; /* 배경색 변화에 대한 전환 효과 */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* 약간의 그림자 효과 */
+    background-color: rgba(255, 255, 255, 0.8); /* 반투명한 흰색 배경 */
 }
 
 .page-link:hover {
-    background-color: #e5e5e5;
+    background-color: #e5e5e5; /* 마우스 오버시의 배경색 */
 }
 
 .AllPage {
@@ -452,22 +456,33 @@ body {
 
 /* 아이콘 메뉴 전체 스타일링 */
 .icon-menu-container {
-    padding: 20px;
+    margin-top: 20px; /* 상단에 20px 마진 추가 */
+    padding: 40px; /* 패딩 값 증가 */
+    background-color: rgba(255, 255, 255, 0.8); /* 반투명한 흰색 배경 */
+    border-radius: 8px; /* 모서리를 둥글게 */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* 약간의 그림자 효과 */
+    transition: transform 0.3s, box-shadow 0.3s; /* 부드러운 전환 효과 */
+
+/* 마우스 호버 시 */
+    &:hover {
+     box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.15); /* 그림자 효과 강조 */
+ }
 }
+
 
 .icon-menu {
     display: flex;
     justify-content: center;
     gap: 20px;
-    padding-bottom: 20px;
-    border-bottom: 1px solid #e0e0e0;
-    margin-bottom: 20px;
+    /*padding-bottom: 20px;*/
+    /*border-bottom: 1px solid #e0e0e0;*/
+    /*margin-bottom: 20px;*/
 }
 
 /* 각 아이콘 스타일링 */
 .icon {
-    width: 50px;
-    height: 50px;
+    width: 70px;  /* 아이콘 너비 증가 */
+    height: 70px; /* 아이콘 높이 증가 */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -496,7 +511,7 @@ body {
     border-radius: 6px;
     position: absolute;
     z-index: 1;
-    bottom: -100%; /* 툴팁의 위치 */
+    bottom: -70%; /* 툴팁의 위치 */
     opacity: 0;
     transition: opacity 0.3s;
     left: 50%;
@@ -509,44 +524,47 @@ body {
     opacity: 1;
 }
 
-.icon.close-icon { /* 'X' 아이콘의 클래스 선택자 수정 */
-    width: 30px;
-    height: 30px;
-    background-color: transparent;
-    color: #ff0000;
-    font-weight: bold;
-    transition: transform 0.3s ease;
-    display: flex; /* 아이콘 내용을 중앙에 위치 */
+/* 'X' 아이콘의 스타일링 */
+.icon.close-icon {
+    width: 70px;  /* 'X' 아이콘 너비 */
+    height: 70px; /* 'X' 아이콘 높이 */
+    background-color: transparent; /* 배경 투명 */
+    transition: transform 0.3s ease; /* 변환 효과 */
+    display: flex; /* 내용을 중앙에 위치시키기 위한 스타일 */
     align-items: center;
     justify-content: center;
 }
 
-.icon.close-icon:hover {
-    transform: scale(1.2);
+.icon.close-icon img { /* 'X' 아이콘 이미지 스타일링 */
+    max-width: 100%; /* 이미지 최대 너비 */
+    max-height: 100%; /* 이미지 최대 높이 */
 }
 
+.icon.close-icon:hover {
+    transform: scale(1.2); /* 호버 시 확대 */
+}
 
 /* 챗봇 모달 영역 */
 /* 기존 .chatbot 스타일을 .chatbot-page로 변경 */
 .chatbot-page {
     width: 100%;
-    padding: 20px;
-    box-shadow: none;
-    margin: 0;
+    padding: 30px; /* 패딩 증가 */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); /* 그림자 효과 추가 */
+    border-radius: 10px; /* 테두리 둥글게 */
     position: relative;
     z-index: 1;
 }
-
-/* 기존의 .float-button 스타일은 필요 없으므로 제거 */
 
 .chat-window {
     width: 100%;
     max-width: 800px;
     margin: 20px auto;
-    border: 1px solid #ddd;
+
+    border: 1px solid #e0e0e0; /* 경계선 색상 수정 */
     border-radius: 10px;
+    background-color: #fff; /* 백그라운드 색상 추가 */
     overflow: auto;
-    padding: 10px;
+    padding: 20px; /* 패딩 증가 */
 }
 
 .float-button {
@@ -564,43 +582,51 @@ body {
 }
 
 .message {
-    padding: 10px;
-    margin: 5px;
+    padding: 12px; /* 패딩 증가 */
+    margin: 10px 0; /* 마진 조정 */
     border-radius: 10px;
-    color: #000;
+    font-size: 0.95em; /* 폰트 크기 조정 */
+    line-height: 1.4; /* 줄 간격 조정 */
 }
 
 .message.user {
-    background-color: #e6f7ff;
+    background-color: #d9eaff; /* 색상 약간 수정 */
     align-self: flex-end;
 }
 
 .message.bot {
-    background-color: #fff2e6;
+    background-color: #ffebe0; /* 색상 약간 수정 */
 }
 
 .input-container {
     display: flex;
-    padding: 10px;
-    border-top: 1px solid #ddd;
-    background-color: #f5f5f5;
+    padding: 15px; /* 패딩 증가 */
+    border-top: 1px solid #e0e0e0; /* 경계선 색상 수정 */
+    background-color: #f9f9f9; /* 배경 색상 조정 */
 }
 
 .input-container input {
     flex-grow: 1;
-    padding: 10px;
-    border: none;
+    padding: 12px; /* 패딩 증가 */
+    border: 1px solid #ddd; /* 경계선 추가 */
     border-radius: 10px;
+    font-size: 0.95em; /* 폰트 크기 조정 */
 }
 
 .input-container button {
     margin-left: 10px;
-    padding: 10px 20px;
+    padding: 10px 25px; /* 패딩 조정 */
     background-color: #007bff;
     color: #fff;
     border: none;
     border-radius: 10px;
+    font-size: 0.95em; /* 폰트 크기 조정 */
     cursor: pointer;
+    transition: background-color 0.3s; /* 배경색 변화 효과 추가 */
+}
+
+.input-container button:hover {
+    background-color: #0056b3; /* 호버 시 배경 색상 조정 */
 }
 
 .loading-spinner {
@@ -617,6 +643,44 @@ body {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
 }
+
+/* FontCard.css */
+
+.font-card {
+    border: 1px solid #e0e0e0;  /* Light gray border */
+    padding: 20px;
+    border-radius: 8px;        /* Rounded corners */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Simple shadow for depth */
+    width: 250px;              /* Fixed width, but can be changed */
+    margin: 20px;              /* Margin to separate from other elements */
+    text-align: center;        /* Centering the text */
+    background-color: #fff;    /* White background */
+    transition: transform 0.3s; /* Smooth transform transition */
+}
+
+.font-card:hover {
+    transform: translateY(-5px); /* Slight upward movement on hover */
+    box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.15); /* Enhanced shadow on hover */
+}
+
+.font-card h3 {
+    margin-bottom: 10px;      /* Space below the font name */
+    color: #333;              /* Dark text color */
+}
+
+.font-card p {
+    margin-bottom: 15px;      /* Space below the category */
+    font-size: 14px;          /* Smaller font size for category */
+    color: #777;              /* Gray text color for less emphasis */
+}
+
+.font-image {
+    max-width: 100%;          /* Ensuring the image doesn't exceed the card width */
+    height: auto;             /* Maintain image aspect ratio */
+    margin-bottom: 15px;      /* Space below the image */
+    border-radius: 4px;       /* Slightly rounded corners for the image */
+}
+
 
 
 
