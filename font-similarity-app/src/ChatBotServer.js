@@ -62,7 +62,7 @@ app.get('/gptserver', function (req, res) {
 
 // 폰트 정보 읽기 함수
 function getFonts() {
-    const fontDirectory = path.join(__dirname, '..', 'public', 'Fonts2');
+    const fontDirectory = path.join(__dirname, '..', 'public', 'Fonts22');
     const categories = fs.readdirSync(fontDirectory);
 
     let fonts = [];
@@ -74,21 +74,33 @@ function getFonts() {
 
         fontFolders.forEach(folder => {
             const fontFolderPath = path.join(categoryFolderPath, folder);
+            console.log(fontFolderPath);
             const fontFiles = fs.readdirSync(fontFolderPath);
-
+            console.log(fontFiles);
             const fontImage = fontFiles.find(file => file.endsWith('.png') || file.endsWith('.PNG'));
-            const fontDownload = fontFiles.find(file => file.endsWith('.zip') || file.endsWith('.ttf') || file.endsWith('.otf'));
+
+            let fontDownload;
+            let isPaid = false;
+            if (fontFolderPath.endsWith('_')) { // 폴더 이름에 '_'가 있는 경우 유료로 간주
+                isPaid = true;
+                const txtFile = fontFiles.find(file => file.endsWith('.txt'));
+                if (txtFile) {
+                    const txtFilePath = path.join(fontFolderPath, txtFile);
+                    fontDownload = fs.readFileSync(txtFilePath, 'utf8'); // .txt 파일의 내용을 읽어옵니다.
+                }
+            } else {
+                fontDownload = fontFiles.find(file => file.endsWith('.zip') || file.endsWith('.ttf') || file.endsWith('.otf'));
+            }
 
             if (!fontMap[folder]) {
-                // 폰트가 fontMap에 존재하지 않으면 새로운 폰트 정보를 생성합니다.
                 fontMap[folder] = {
                     fontName: folder,
-                    fontImage: `/Fonts2/${category}/${folder}/${fontImage}`,
-                    fontDownloadLink: `/Fonts2/${category}/${folder}/${fontDownload}`,
-                    category: [category] // 카테고리를 배열로 관리합니다.
+                    fontImage: `/Fonts22/${category}/${folder}/${fontImage}`,
+                    fontDownloadLink: isPaid ? fontDownload : `/Fonts22/${category}/${folder}/${fontDownload}`, // 유료 폰트는 별도 처리
+                    category: [category], // 카테고리를 배열로 관리합니다.
+                    isPaid: isPaid // 유료 폰트 여부
                 };
             } else {
-                // 폰트가 이미 fontMap에 존재하면, 카테고리 정보만 업데이트합니다.
                 fontMap[folder].category.push(category);
             }
         });

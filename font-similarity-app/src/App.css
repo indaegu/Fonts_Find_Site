@@ -1,11 +1,12 @@
 .main-container {
     font-family: Arial, sans-serif; /* 웹페이지 전체의 폰트 설정 */
+
 }
 body {
     font-family: Arial, sans-serif;
     background-image: url('C:\Code\mon\font-similarity-app\public\back.jpg'); /* You can replace 'path_to_your_image.jpg' with the path to your desired image */
     background-size: cover;
-    background-repeat: no-repeat;
+    background-repeat: repeat;
     background-position: center center;
 }
 .message {
@@ -427,9 +428,12 @@ body {
 .AllPage {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;  /* 카드들을 가운데 정렬 */
-    align-items: start;  /* 카드들의 상단을 맞춤 */
+    justify-content: center;  /* 화면 중앙에 정렬 */
+    align-items: center;      /* 화면 중앙에 정렬 */
     gap: 15px;  /* 카드들 사이의 간격 */
+    height: 100vh; /* 화면 높이를 차지하도록 설정 */
+    /*background-image: url('C:\Code\mon\font-similarity-app\public\back.jpg'); !* You can replace 'path_to_your_image.jpg' with the path to your desired image *!*/
+
 }
 .AllPage select {
     margin: 20px 0;   /* 상하 여백 추가 */
@@ -456,12 +460,13 @@ body {
 
 /* 아이콘 메뉴 전체 스타일링 */
 .icon-menu-container {
-    margin-top: 20px; /* 상단에 20px 마진 추가 */
-    padding: 40px; /* 패딩 값 증가 */
-    background-color: rgba(255, 255, 255, 0.8); /* 반투명한 흰색 배경 */
-    border-radius: 8px; /* 모서리를 둥글게 */
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* 약간의 그림자 효과 */
-    transition: transform 0.3s, box-shadow 0.3s; /* 부드러운 전환 효과 */
+    position: relative; /* 폰트 필터 위치를 조절하기 위한 기준 설정 */
+    margin-top: 20px;
+    padding: 40px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
 
 /* 마우스 호버 시 */
     &:hover {
@@ -543,6 +548,42 @@ body {
 .icon.close-icon:hover {
     transform: scale(1.2); /* 호버 시 확대 */
 }
+
+/*폰트 필터 스타일링*/
+.font-filter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+}
+.font-filter input[type="radio"] {
+    display: none;
+}
+
+.font-filter input[type="radio"]:checked + label {
+    background-color: #007BFF;
+    color: #fff;
+}
+
+.font-filter label {
+    padding: 10px 20px;
+    background-color: #f0f0f0;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.font-filter label:hover {
+    background-color: #e0e0e0;
+}
+
+
+
 
 /* 챗봇 모달 영역 */
 /* 기존 .chatbot 스타일을 .chatbot-page로 변경 */

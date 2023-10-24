@@ -3,24 +3,42 @@ import '../App.css';
 import Header from "../Component/Header";
 import FontCard from "../Component/FontCardComponent";
 import PageNation from "../Component/PageNation";
-import IconMenu from "../Component/IconMenu"; // IconMenu 컴포넌트를 추가로 임포트
+import IconMenu from "../Component/IconMenu";
 
 function AllPage() {
     const [fonts, setFonts] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
     const fontsPerPage = 6;
     const [searchKeyword, setSearchKeyword] = useState("");
-    const [selectedCategory, setSelectedCategory] = useState('All'); // 추가: 선택된 카테고리 상태 저장
+    const [selectedCategory, setSelectedCategory] = useState('All');
+    const [fontFilter, setFontFilter] = useState('all'); // 'all', 'paid', 'free'
+
     const filteredFonts = fonts.filter(font => font.fontName.toLowerCase().includes(searchKeyword.toLowerCase()));
-    const indexOfLastFont = currentPage * fontsPerPage;
-    const indexOfFirstFont = indexOfLastFont - fontsPerPage;
 
     const categoryFilteredFonts = selectedCategory === 'All' ?
         filteredFonts :
         filteredFonts.filter(font => font.category.includes(selectedCategory));
 
-    const currentFonts = categoryFilteredFonts.slice(indexOfFirstFont, indexOfLastFont);  // 수정된 부분
-    // 카테고리를 기반으로 폰트 필터링
+    let displayFonts = categoryFilteredFonts;
+
+    switch(fontFilter) {
+        case 'paid':
+            displayFonts = displayFonts.filter(font => font.isPaid);
+            break;
+        case 'free':
+            displayFonts = displayFonts.filter(font => !font.isPaid);
+            break;
+        default:
+            break;
+    }
+
+    const indexOfLastFont = currentPage * fontsPerPage;
+    const indexOfFirstFont = indexOfLastFont - fontsPerPage;
+    const fontsToShow = displayFonts.slice(indexOfFirstFont, indexOfLastFont);
+
+    const handleFontFilterChange = (filter) => {
+        setFontFilter(filter);
+    };
 
     const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
@@ -31,7 +49,6 @@ function AllPage() {
             if (!fontMap[font.fontName]) {
                 fontMap[font.fontName] = font;
             } else {
-                // 이미 해당 폰트가 fontMap에 있으면 카테고리를 병합합니다.
                 fontMap[font.fontName].category += `, ${font.category}`;
             }
         });
@@ -41,9 +58,9 @@ function AllPage() {
 
     const handleSearch = (keyword) => {
         setSearchKeyword(keyword);
-        setCurrentPage(1);  // 검색을 실행할 때마다 첫 페이지로 돌아갑니다.
-
+        setCurrentPage(1);
     };
+
     useEffect(() => {
         fetch('http://localhost:3000/api/fonts')
             .then(res => res.json())
@@ -58,24 +75,38 @@ function AllPage() {
         <div className="main-container">
             <Header onSearch={handleSearch} />
             <div className="AllPage">
-                {/* IconMenu 컴포넌트를 추가하고, 카테고리가 선택되었을 때 처리할 로직을 전달 */}
                 <IconMenu onCategorySelect={setSelectedCategory} />
+                <div className="font-filter">
+                    <label>
+                        <input type="radio" name="font-filter" value="all" checked={fontFilter === 'all'} onChange={() => handleFontFilterChange('all')} />
+                        모두 보기
+                    </label>
+                    <label>
+                        <input type="radio" name="font-filter" value="paid" checked={fontFilter === 'paid'} onChange={() => handleFontFilterChange('paid')} />
+                        유료만 보기
+                    </label>
+                    <label>
+                        <input type="radio" name="font-filter" value="free" checked={fontFilter === 'free'} onChange={() => handleFontFilterChange('free')} />
+                        무료만 보기
+                    </label>
+                </div>
                 <div className="font-container">
-                    {currentFonts.length > 0 ? (
-                        currentFonts.map(font => (
+                    {fontsToShow.length > 0 ? (
+                        fontsToShow.map(font => (
                             <FontCard
                                 key={font.fontName}
                                 fontName={font.fontName}
                                 fontImage={font.fontImage}
                                 fontDownloadLink={font.fontDownloadLink}
                                 category={font.category}
+                                isPaid={font.isPaid}
                             />
                         ))
                     ) : (
                         <p className="no-results">검색 결과가 없습니다.</p>
                     )}
                 </div>
-                {currentFonts.length > 0 && <PageNation totalFonts={categoryFilteredFonts.length} fontsPerPage={fontsPerPage} paginate={paginate} />}
+                {fontsToShow.length > 0 && <PageNation totalFonts={displayFonts.length} fontsPerPage={fontsPerPage} paginate={paginate} />}
             </div>
         </div>
     );
