@@ -7,13 +7,13 @@ import Header from "../Component/Header";
 
 function PredictPage() {
     const [file, setFile] = useState(null);
-    const [fileName, setFileName] = useState("");  // 추가: 파일 이름을 저장하는 state
+    const [fileName, setFileName] = useState("");
     const [fonts, setFonts] = useState([]);
 
     const handleSubmit = async () => {
-        if (!file) {  // 파일이 선택되지 않았을 때
+        if (!file) {
             alert("사진을 삽입해주세요!");
-            return;  // 함수 실행 중지
+            return;
         }
 
         const formData = new FormData();
@@ -31,8 +31,24 @@ function PredictPage() {
 
             const data = await response.json();
             if (data && data.fonts) {
-                setFonts(data.fonts);
-                console.log(data.fonts);
+                if (data.paidFontDetected) {
+                    const userResponse = window.confirm("유료 폰트로 판단됩니다! 가장 유사한 무료 폰트를 제시해드릴까요?");
+                    if (userResponse) {
+                        const freeFonts = data.fonts.filter(font => !font.isPaid);
+                        if (freeFonts.length > 0) {
+                            setFonts(freeFonts);
+                        } else {
+                            const paidResponse = window.confirm("죄송합니다. 현재 유사한 무료 폰트를 찾을 수 없습니다. 유사한 유료 폰트라도 제공해드릴까요?");
+                            if (paidResponse) {
+                                setFonts(data.fonts);
+                            }
+                        }
+                    } else {
+                        setFonts(data.fonts);
+                    }
+                } else {
+                    setFonts(data.fonts);
+                }
             } else {
                 console.error("Unexpected server response:", data);
             }
@@ -40,6 +56,7 @@ function PredictPage() {
             console.error("There was a problem with the fetch operation:", error);
         }
     };
+
 
     const handleFileChange = (e) => {
         setFile(e.target.files[0]);
@@ -80,7 +97,7 @@ function PredictPage() {
                     {/* Font items container */}
                     <div className="font-items-container">
                         {fonts.map((font, idx) => (
-                            <FontItem key={idx} font={font}/>
+                            <FontItem key={idx} font={font} isPaid={font.isPaid}/>
                         ))}
                     </div>
                 </div>
