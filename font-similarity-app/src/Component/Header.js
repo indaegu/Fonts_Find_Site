@@ -5,7 +5,6 @@ const Header = ({onSearch}) => {
     const [searchKeyword, setSearchKeyword] = useState("");
     const handleSearch = () => {
         onSearch(searchKeyword);
-
     };
 
     const handleKeyPress = (e) => {

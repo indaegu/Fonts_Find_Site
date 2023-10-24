@@ -561,14 +561,6 @@ body {
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
     margin-top: 20px;
 }
-.font-filter input[type="radio"] {
-    display: none;
-}
-
-.font-filter input[type="radio"]:checked + label {
-    background-color: #007BFF;
-    color: #fff;
-}
 
 .font-filter label {
     padding: 10px 20px;
@@ -581,6 +573,18 @@ body {
 .font-filter label:hover {
     background-color: #e0e0e0;
 }
+
+.font-filter input[type="radio"] {
+    display: none;
+}
+
+.font-filter input[type="radio"]:checked + label {
+    background-color: #007BFF;
+    color: #fff;
+    /*box-shadow: 0px 0px 10px rgba(0, 123, 255, 0.5); !* 추가된 부분 *!*/
+
+}
+
 
 
 

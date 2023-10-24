@@ -77,16 +77,21 @@ function AllPage() {
             <div className="AllPage">
                 <IconMenu onCategorySelect={setSelectedCategory} />
                 <div className="font-filter">
-                    <label>
-                        <input type="radio" name="font-filter" value="all" checked={fontFilter === 'all'} onChange={() => handleFontFilterChange('all')} />
+                    <input type="radio" id="filter-all" name="font-filter" value="all" checked={fontFilter === 'all'}
+                           onChange={() => handleFontFilterChange('all')}/>
+                    <label htmlFor="filter-all">
                         모두 보기
                     </label>
-                    <label>
-                        <input type="radio" name="font-filter" value="paid" checked={fontFilter === 'paid'} onChange={() => handleFontFilterChange('paid')} />
+
+                    <input type="radio" id="filter-paid" name="font-filter" value="paid" checked={fontFilter === 'paid'}
+                           onChange={() => handleFontFilterChange('paid')}/>
+                    <label htmlFor="filter-paid">
                         유료만 보기
                     </label>
-                    <label>
-                        <input type="radio" name="font-filter" value="free" checked={fontFilter === 'free'} onChange={() => handleFontFilterChange('free')} />
+
+                    <input type="radio" id="filter-free" name="font-filter" value="free" checked={fontFilter === 'free'}
+                           onChange={() => handleFontFilterChange('free')}/>
+                    <label htmlFor="filter-free">
                         무료만 보기
                     </label>
                 </div>
