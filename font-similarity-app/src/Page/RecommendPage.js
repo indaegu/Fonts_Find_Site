@@ -8,7 +8,7 @@ function RecommendPage() {
         <div className="main-container">
             <Header/>
             <div className="PredictPage">
-                <h1 className="page-title">폰트추천 페이지</h1>
+                <h1 className="page-title">폰트 추천 도우미에게 질문하기</h1>
                 <Chatbot/>
             </div>
         </div>

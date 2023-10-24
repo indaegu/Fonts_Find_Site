@@ -32,7 +32,7 @@ model.fc = nn.Linear(num_features, 9)
 model = model.to(device)
 
 # 사전 학습된 모델을 불러옵니다.
-model_path = 'C:/Code/mon/model.pt'  # 본인 파일경로 주의@@@@@@
+model_path = 'C:/Code/mon/model_231024.pt'  # 본인 파일경로 주의@@@@@@
 model = torch.load(model_path, map_location=device)  # map_location 파라미터 추가
 # 모델을 평가 모드로 설정합니다.
 model.eval()

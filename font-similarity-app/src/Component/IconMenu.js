@@ -23,7 +23,7 @@ function IconMenu({onCategorySelect} ) {
         <div className="icon-menu-container">
             <div className="icon-menu">
                 {icons.map(icon => (
-                    <div className="icon" onClick={() => handleIconClick(icon.name)}>
+                    <div className={`icon ${selectedCategory === icon.name ? "icon-selected" : ""}`} onClick={() => handleIconClick(icon.name)}>
                         <img src={icon.image} alt={icon.name} />
                         <span className="tooltip">{icon.name}</span>
                     </div>

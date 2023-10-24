@@ -11,7 +11,7 @@ function AllPage() {
     const fontsPerPage = 6;
     const [searchKeyword, setSearchKeyword] = useState("");
     const [selectedCategory, setSelectedCategory] = useState('All');
-    const [fontFilter, setFontFilter] = useState('all'); // 'all', 'paid', 'free'
+    const [fontFilter, setFontFilter] = useState('all');
 
     const filteredFonts = fonts.filter(font => font.fontName.toLowerCase().includes(searchKeyword.toLowerCase()));
 
@@ -21,7 +21,7 @@ function AllPage() {
 
     let displayFonts = categoryFilteredFonts;
 
-    switch(fontFilter) {
+    switch (fontFilter) {
         case 'paid':
             displayFonts = displayFonts.filter(font => font.isPaid);
             break;
@@ -42,29 +42,30 @@ function AllPage() {
 
     const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
-    function deduplicateFonts(fontList) {
-        const fontMap = {};
-
-        fontList.forEach(font => {
-            if (!fontMap[font.fontName]) {
-                fontMap[font.fontName] = font;
-            } else {
-                fontMap[font.fontName].category += `, ${font.category}`;
-            }
-        });
-
-        return Object.values(fontMap);
-    }
-
-    const handleSearch = (keyword) => {
-        setSearchKeyword(keyword);
-        setCurrentPage(1);
+    const handleKeyPress = (e) => {
+        if (e.key === "Enter") {
+            setCurrentPage(1);
+        }
     };
 
     useEffect(() => {
         fetch('http://localhost:3000/api/fonts')
             .then(res => res.json())
             .then(data => {
+                const deduplicateFonts = (fontList) => {
+                    const fontMap = {};
+
+                    fontList.forEach(font => {
+                        if (!fontMap[font.fontName]) {
+                            fontMap[font.fontName] = font;
+                        } else {
+                            fontMap[font.fontName].category += `, ${font.category}`;
+                        }
+                    });
+
+                    return Object.values(fontMap);
+                }
+
                 const uniqueFonts = deduplicateFonts(data);
                 setFonts(uniqueFonts);
             })
@@ -73,27 +74,43 @@ function AllPage() {
 
     return (
         <div className="main-container">
-            <Header onSearch={handleSearch} />
+            <Header/>
             <div className="AllPage">
-                <IconMenu onCategorySelect={setSelectedCategory} />
-                <div className="font-filter">
-                    <input type="radio" id="filter-all" name="font-filter" value="all" checked={fontFilter === 'all'}
-                           onChange={() => handleFontFilterChange('all')}/>
-                    <label htmlFor="filter-all">
-                        모두 보기
-                    </label>
-
-                    <input type="radio" id="filter-paid" name="font-filter" value="paid" checked={fontFilter === 'paid'}
-                           onChange={() => handleFontFilterChange('paid')}/>
-                    <label htmlFor="filter-paid">
-                        유료만 보기
-                    </label>
-
-                    <input type="radio" id="filter-free" name="font-filter" value="free" checked={fontFilter === 'free'}
-                           onChange={() => handleFontFilterChange('free')}/>
-                    <label htmlFor="filter-free">
-                        무료만 보기
-                    </label>
+                <div className="sidebar">
+                    <div className="search-container">
+                        <input
+                            type="text"
+                            placeholder="전체 폰트 검색"
+                            className="search-bar"
+                            value={searchKeyword}
+                            onChange={(e) => setSearchKeyword(e.target.value)}
+                            onKeyPress={handleKeyPress}
+                        />
+                        <button onClick={() => setCurrentPage(1)} className="search-button">
+                            <img src="/searchicon.png" alt="검색" className="search-icon" />
+                        </button>
+                    </div>
+                    <IconMenu onCategorySelect={setSelectedCategory}/>
+                    <div className="font-filter">
+                        <input type="radio" id="filter-all" name="font-filter" value="all"
+                               checked={fontFilter === 'all'}
+                               onChange={() => handleFontFilterChange('all')}/>
+                        <label htmlFor="filter-all">
+                            모두 보기
+                        </label>
+                        <input type="radio" id="filter-paid" name="font-filter" value="paid"
+                               checked={fontFilter === 'paid'}
+                               onChange={() => handleFontFilterChange('paid')}/>
+                        <label htmlFor="filter-paid">
+                            유료만 보기
+                        </label>
+                        <input type="radio" id="filter-free" name="font-filter" value="free"
+                               checked={fontFilter === 'free'}
+                               onChange={() => handleFontFilterChange('free')}/>
+                        <label htmlFor="filter-free">
+                            무료만 보기
+                        </label>
+                    </div>
                 </div>
                 <div className="font-container">
                     {fontsToShow.length > 0 ? (
@@ -111,7 +128,8 @@ function AllPage() {
                         <p className="no-results">검색 결과가 없습니다.</p>
                     )}
                 </div>
-                {fontsToShow.length > 0 && <PageNation totalFonts={displayFonts.length} fontsPerPage={fontsPerPage} paginate={paginate} />}
+                {fontsToShow.length > 0 &&
+                    <PageNation totalFonts={displayFonts.length} fontsPerPage={fontsPerPage} paginate={paginate}/>}
             </div>
         </div>
     );
