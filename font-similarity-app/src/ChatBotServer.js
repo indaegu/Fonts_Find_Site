@@ -28,8 +28,8 @@ app.get('/gptserver', function (req, res) {
     res.setHeader('Connection', 'keep-alive');
 
     openai.chat.completions.create({
-        model: 'gpt-3.5-turbo',
-        max_tokens: 500,
+        model: 'gpt-4',
+        max_tokens: 1000,
         stream: true,
         n: 1,
         temperature: 0.9,
