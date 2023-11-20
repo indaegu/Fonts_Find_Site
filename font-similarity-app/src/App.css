@@ -9,6 +9,23 @@ body {
     background-repeat: repeat;
     background-position: center center;
 }
+h1 {
+    font-size: 2.5em; /* 크기는 적절하게 조절 */
+    color: #4A4A4A; /* 어두운 회색 계열로 변경 */
+    font-weight: 700; /* 굵은 글씨체 */
+    text-align: center; /* 가운데 정렬 */
+    margin-bottom: 20px; /* 아래쪽 여백 */
+    text-transform: uppercase; /* 모든 글자를 대문자로 */
+    letter-spacing: 1.5px; /* 글자 사이 간격 조정 */
+    word-spacing: 4px; /* 단어 사이 간격 조정 */
+    text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.5); /* 밝은 그림자로 대조 효과 */
+    transition: all 0.3s ease-in-out; /* 부드러운 전환 효과 */
+}
+
+h1:hover {
+    color: #3A3A3A; /* 호버 시 색상을 약간 더 어둡게 변경 */
+    text-shadow: 3px 3px 5px rgba(255, 255, 255, 0.7); /* 호버 시 밝은 그림자 강조 */
+}
 .message {
     white-space: pre-line;
 }
@@ -78,6 +95,20 @@ body {
     color: black;
     font-size : 1.9vw;
 }
+/* 카테고리 아이템에 마우스를 올렸을 때의 드롭다운 메뉴 스타일링 */
+.category-item:hover .category-dropdown {
+    display: block;                 /* 마우스를 올리면 드롭다운 메뉴 표시 */
+}
+
+.category-item a {
+    color: black;
+    text-decoration: none;
+}
+
+.category-item a:hover {
+    text-decoration: none;          /* 밑줄 제거*/
+}
+
 
 /* 드롭다운 메뉴 스타일링 */
 .category-dropdown {
@@ -104,20 +135,19 @@ body {
 .category-dropdown a:hover {
     text-decoration: underline;     /* 밑줄 추가하여 호버 효과 제공 */
 }
-
-/* 카테고리 아이템에 마우스를 올렸을 때의 드롭다운 메뉴 스타일링 */
-.category-item:hover .category-dropdown {
-    display: block;                 /* 마우스를 올리면 드롭다운 메뉴 표시 */
+.category-item .active {
+    font-weight: bold; /* 현재 페이지의 링크를 굵게 표시 */
+    color: #4A90E2; /* 세련된 파란색 계열로 변경 */
+    text-shadow: 0px 1px 2px rgba(0, 0, 0, 0.2); /* 텍스트에 은은한 그림자 추가 */
+    transition: color 0.3s ease-in-out, text-shadow 0.3s ease-in-out; /* 부드러운 색상 및 그림자 전환 효과 */
 }
 
-.category-item a {
-    color: black;
-    text-decoration: none;
+.category-item a:hover, .category-item .active:hover {
+    color: #2E7DCC; /* 마우스를 올렸을 때 색상 변경 */
+    text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.3); /* 마우스를 올렸을 때 그림자 강조 */
 }
 
-.category-item a:hover {
-    text-decoration: underline;
-}
+
 
 
 
@@ -204,6 +234,27 @@ body {
     padding: 30px;
     border-radius: 8px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.selected {
+    background-color: #4CAF50; /* 선택된 버튼의 배경색 */
+    color: black; /* 선택된 버튼의 텍스트 색상 */
+}
+
+/* 버튼의 기본 스타일 */
+.font-mode-buttons button {
+    margin: 0 4px;
+    padding: 10px 20px;
+    border: 1px solid #ddd;
+    background-color: #f8f8f8; /* 기본 배경색 */
+    color: #333; /* 기본 텍스트 색상 */
+    cursor: pointer;
+    outline: none;
+}
+
+/* 버튼에 마우스를 올렸을 때의 스타일 */
+.font-mode-buttons button:hover {
+    border-color: #4CAF50;
 }
 
 

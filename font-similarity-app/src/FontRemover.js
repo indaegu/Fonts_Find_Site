@@ -1,3 +1,4 @@
+// 폰트 파일 삭제할때  편하라고 만들어둔 모듈
 const fs = require('fs');
 const path = require('path');
 

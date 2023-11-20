@@ -1,3 +1,4 @@
+import { NavLink } from 'react-router-dom';
 import React from 'react';
 
 function Header() {
@@ -10,13 +11,16 @@ function Header() {
 
                 <nav className="categories">
                     <div className="category-item">
-                        <a href="/">모든폰트</a> <br />
+                        <NavLink to="/" activeClassName="active">모든폰트</NavLink> <br />
                     </div>
                     <div className="category-item">
-                        <a href="/RecommendPage">폰트추천</a> <br />
+                        <NavLink to="/RecommendPage" activeClassName="active">폰트추천</NavLink> <br />
                     </div>
                     <div className="category-item">
-                        <a href="/PredictPage">폰트찾기</a> <br />
+                        <NavLink to="/PredictPage" activeClassName="active">한글폰트찾기</NavLink> <br />
+                    </div>
+                    <div className="category-item">
+                        <NavLink to="/PredictPageEn" activeClassName="active">영어를한글로</NavLink> <br />
                     </div>
                 </nav>
             </div>

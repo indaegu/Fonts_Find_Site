@@ -5,7 +5,7 @@ import UploadedFile from '../Component/UploadedFile';
 import FontItem from '../Component/FontItem';
 import Header from "../Component/Header";
 
-function PredictPage() {
+function PredictPageEn() {
     const [file, setFile] = useState(null);
     const [fileName, setFileName] = useState("");
     const [fonts, setFonts] = useState([]);
@@ -104,7 +104,7 @@ function PredictPage() {
         <div className="main-container">
             <Header/>
             <div className="PredictPage">
-                <h1 className="page-title">모든 폰트 찾기</h1>
+                <h1 className="page-title">영어폰트와 유사한 한글폰트</h1>
                 <div className="PredictPage-container">
                     <DragDropArea
                         fileName={fileName}
@@ -133,4 +133,4 @@ function PredictPage() {
     );
 }
 
-export default PredictPage;
+export default PredictPageEn;
